@@ -1,0 +1,22 @@
+
+body {
+  background-color: #0077C2;
+  margin: 20px;
+}
+
+.navbar-inverse {
+  background-color: #0066A5;
+}
+
+.logo {
+  color: #FFF;
+  margin: auto;
+  font-family: 'Merienda';
+  font-size: 20px;
+}
+.task {
+  display: inline-block;
+  margin: 3px;
+  text-align: left;
+  width: 200px;
+}

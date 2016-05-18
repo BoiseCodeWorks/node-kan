@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Node-Kan</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Merienda' type='text/css'>
+		<link rel="stylesheet" href="site.css">
+	</head>
+	<body ng-app="NodeKan">
+		
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<a class="navbar-brand">
+					<span class="logo"><i class="fa fa-trello"></i> Node-Kan</span>
+				</a>	
+				<form class="navbar-form navbar-left">
+					<button class="btn btn-primary" title="Add List"><i class="fa fa-plus"></i></button>
+				</form>
+				<form class="navbar-form navbar-right" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button class="btn btn-primary" title="Search"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+		</nav>
+		
+		<div class="container-responsive">
+			<story-board></story-board>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js"></script>
+		<script src="app.js"></script>
+		<script src="services/storyDataApi.js"></script>
+		<script src="components/storyBoard.js"></script>
+		<script src="components/storyList.js"></script>
+		<script src="components/storyCard.js"></script>
+	</body>
+</html>
