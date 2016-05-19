@@ -3,48 +3,115 @@
 
 	angular.module('NodeKan')
 
-	.factory('storyDataApi', ['$q', '$http', function ($q, $http) {
+	.factory('storyDataApi', ['$q', '$resource', function ($q, $resource) {
 
-		var urlBase = '/api/';
+		var listApi = $resource('/api/lists/:id', {},
+		{
+			'fetch': { method: 'GET', isArray: false },
+			'save': { method: 'POST', isArray: false },
+			'update': { method: 'PUT', isArray: false }
+		});
 
+		var cardApi = $resource('/api/cards/:id', {},
+		{
+			'fetch': { method: 'GET', isArray: false },
+			'save': { method: 'POST', isArray: false },
+			'update': { method: 'PUT', isArray: false }
+		});
+
+		function addList(list) {
+
+			var deferred = $q.defer();
+			var params = list;
+
+			listApi.save(params,
+				function (result) {
+					if (result.ok) {
+						deferred.resolve(result.data);
+					}
+					else {
+						deferred.reject(result.error);
+					}
+				},
+				function (err) {
+					deferred.reject(err);
+				}			
+			);
+
+			return deferred.promise;
+		}	
+		
 		function getLists() {
 
 			var deferred = $q.defer();
+			var params = {};
 			
-			$http.get(urlBase + 'lists').then(
-				function (resp) {
-					if (resp.ok) {
-						deferred.resolve(resp.data);
+			listApi.fetch(params,
+				function (result) {
+					if (result.ok) {
+						deferred.resolve(result.data);
 					}
 					else {
-						deferred.reject(resp.statusText);
+						deferred.reject(result.error);
 					}
-				}
+				},
+				function (err) {
+					deferred.reject(err);
+				}			
 			);
 			
 			return deferred.promise;
 		}
 		
-		function getPerson(id) {
+		function getCards(listId) {
 
 			var deferred = $q.defer();
+			var params = {
+				listId: listId
+			};
 			
-			$http.get(urlBase + 'people/' + id).then(function (data) {
-
-				if (resp.status === 200) {
-					deferred.resolve(resp.data.results);
-				}
-				else {
-					deferred.reject(resp.statusText);
-				}
-			});
+			cardApi.fetch(params,
+				function (result) {
+					if (result.ok) {
+						deferred.resolve(result.data);
+					}
+					else {
+						deferred.reject(result.error);
+					}
+				},
+				function (err) {
+					deferred.reject(err);
+				}			
+			);
 			
 			return deferred.promise;
 		}
+		
+		function addCard(card) {
+
+			var deferred = $q.defer();
+			var params = card;
+
+			cardApi.save(params,
+				function (result) {
+					if (result.ok) {
+						deferred.resolve(result.data);
+					}
+					else {
+						deferred.reject(result.error);
+					}
+				},
+				function (err) {
+					deferred.reject(err);
+				}			
+			);
+
+			return deferred.promise;
+		}	
 
 		return {
-			getPeople: getPeople,
-			getPerson: getPerson
+			addList: addList,
+			getLists: getLists
 		};
 	}]);
 })();

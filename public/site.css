@@ -2,6 +2,7 @@
 body {
   background-color: #0077C2;
   margin: 20px;
+  padding-top: 40px;
 }
 
 .navbar-inverse {
@@ -14,6 +15,21 @@ body {
   font-family: 'Merienda';
   font-size: 20px;
 }
+
+.storyBoardNav {
+
+}
+
+.storyBoard {
+
+}
+
+.storyList {
+  display: inline-block;
+  margin: 5px;
+  width: 250px;
+}
+
 .task {
   display: inline-block;
   margin: 3px;

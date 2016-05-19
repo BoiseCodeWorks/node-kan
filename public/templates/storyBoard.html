@@ -1,3 +1,58 @@
-<div>
-	<story-list ng-repeat="list in vm.lists track by $index" name="list.name"></story-list>
+<div class="storyBoardNav">
+	<button class="btn btn-default btn-sm" title="Add List" ng-click="vm.addList()"><i class="fa fa-plus"></i></button>
 </div>
+<div class="storyBoard">
+	<story-list ng-repeat="list in vm.lists track by $index" list="list"></story-list>
+</div>
+
+<script type="text/ng-template" id="addListModal.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Add A List</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="vm.list.name" class="form-control" id="name" placeholder="Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-sm-2 control-label">Description</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="vm.list.description" class="form-control" id="description" placeholder="Description">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" type="button" ng-click="vm.ok()">Add</button>
+		<button class="btn btn-danger" type="button" ng-click="vm.cancel()">Cancel</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="addCardModal.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Add A Card</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="summary" class="col-sm-2 control-label">Summary</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="vm.card.summary" class="form-control" id="summary" placeholder="Summary">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="detail" class="col-sm-2 control-label">Detail</label>
+				<div class="col-sm-10">
+					<textarea ng-model="vm.card.detail" class="form-control" id="detail" placeholder="Detail"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" type="button" ng-click="vm.ok()">Add</button>
+		<button class="btn btn-danger" type="button" ng-click="vm.cancel()">Cancel</button>
+	</div>
+</script>

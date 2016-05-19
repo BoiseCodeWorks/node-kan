@@ -1,3 +1,3 @@
 (function () {
-  angular.module('NodeKan', []);
+  angular.module('NodeKan', ['ngResource', 'ui.bootstrap']);
 })();

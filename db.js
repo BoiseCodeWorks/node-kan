@@ -1,5 +1,6 @@
 (function () {
 
+	var path = require('path');	
 	var uuid = require('node-uuid');	
 	var JSData = require('js-data');	
 	var DSNedbAdapter = require('js-data-nedb');
@@ -11,7 +12,7 @@
 
 	var List = store.defineResource({
 		name: 'list',
-		filepath: __dirname + '/data/listData.db',
+		filepath: path.join(__dirname, '/data/listData.db'),
 		relations: {
 			hasMany: {
 				card: {
@@ -24,7 +25,7 @@
 	
 	var Card = store.defineResource({
 		name: 'card',
-		filepath: __dirname + '/data/cardData.db',
+		filepath: path.join(__dirname, '/data/cardData.db'),
 		relations: {
 			belongsTo: {
 				list: {
@@ -37,25 +38,37 @@
 
 	function getLists() {
 
-		return new Promise(function (resolve, reject) {
-			
-			List.findAll().then(function (lists) {
-				
-				List.loadRelations(lists[0], ['card']).then(function (list) {
-					console.log(list);
-				});
-			});
-		});		
-
+		var params = {};
+		
+		var options = {
+			with: ['card']
+		};
+		
+		return List.findAll(params, options);	
 	}
 	
-	function addList(name) {
+	function addList(name, description) {
 
 		return List.create({
 			id: uuid.v4(),
 			name: name
 		});			
 	}	
+	
+	function saveList(list) {
+
+		return List.update(list.Id, list);				
+	}	
+	
+	function deleteList(list) {
+
+		return List.destroy(list.Id);				
+	}	
+	
+	function getCards() {
+		
+		return Card.findAll();	
+	}
 	
 	function addCard(listId, summary, detail) {
 
@@ -67,9 +80,24 @@
 		});		
 	}	
 	
+	function saveCard(card) {
+
+		return Card.update(card.Id, card);				
+	}	
+	
+	function deleteCard(card) {
+
+		return Card.destroy(card.Id);				
+	}	
+	
 	module.exports = {
 		getLists: getLists,
 		addList: addList,
-		addCard: addCard
+		saveList: saveList,
+		deleteList: deleteList,
+		getCards: getCards,
+		addCard: addCard,
+		saveCard: saveCard,
+		deleteCard: deleteCard
 	};
 })();
