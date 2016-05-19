@@ -25,7 +25,7 @@
 
 		vm.$onInit = activate;
         		
-		vm.stories = [];
+		vm.cards = [];
 		
 		vm.addCard = function () {
 			
@@ -45,7 +45,7 @@
 					dataApi.addCard(card).then(
 						function (newCard) {
 							console.log('New Card: ', newCard);
-							vm.stories.push(newCard);
+							vm.cards.push(newCard);
 						}
 					);
 				},
@@ -56,17 +56,17 @@
 		}
 
 		function activate() {
+
+			vm.cards = vm.list.cards;
 			
-            vm.getStories = function() {
+            vm.getCards = function() {
 
                 dataApi.getCards(vm.list.id).then(
-					function (stories) {
-                    	vm.stories = stories;
+					function (cards) {
+                    	vm.cards = cards;
 					}
 				);
             };
-			
-            vm.getStories();
 		}	
 
 	}	
