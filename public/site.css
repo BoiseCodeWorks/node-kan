@@ -16,18 +16,19 @@ body {
   font-size: 20px;
 }
 
-.storyBoardNav {
-
-}
-
 .storyBoard {
-
+  vertical-align: top;
 }
 
 .storyList {
   display: inline-block;
   margin: 5px;
   width: 250px;
+  vertical-align: top;
+}
+
+.storyListPadding {
+  height: 100%;
 }
 
 .task {

@@ -1,10 +1,14 @@
-<div class="panel panel-primary person">
+<div class="panel panel-info person">
 	<div class="panel-heading">
-		<span>{{ $ctrl.item.name }}</span>
+		<strong>{{ vm.story.summary }}</strong>
+		<div class="btn-group pull-right" role="group">
+			<button class="btn btn-default btn-xs" ng-click="vm.editCard()"><i class="fa fa-pencil"></i></button>
+			<button class="btn btn-default btn-xs" ng-click="vm.deleteCard()"><i class="fa fa-times"></i></button>
+		</div>
 	</div>
 	<div class="panel-body">
 		<div>
-			<span>{{ $ctrl.item.description }}</span>
+			<span>{{ vm.story.detail }}</span>
 		</div>
 	</div>
 </div>

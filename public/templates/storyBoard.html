@@ -2,7 +2,7 @@
 	<button class="btn btn-default btn-sm" title="Add List" ng-click="vm.addList()"><i class="fa fa-plus"></i></button>
 </div>
 <div class="storyBoard">
-	<story-list ng-repeat="list in vm.lists track by $index" list="list"></story-list>
+	<story-list class="storyList" ng-repeat="list in vm.lists track by $index" list="list"></story-list>
 </div>
 
 <script type="text/ng-template" id="addListModal.html">
