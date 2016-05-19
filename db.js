@@ -65,9 +65,17 @@
 		return List.destroy(list.Id);				
 	}	
 	
-	function getCards() {
+	function getCards(listId) {
+
+		var params = {
+			where: {
+    			listId: {
+      				'==': listId
+    			}
+  			}
+		};
 		
-		return Card.findAll();	
+		return Card.findAll(params);	
 	}
 	
 	function addCard(listId, summary, detail) {

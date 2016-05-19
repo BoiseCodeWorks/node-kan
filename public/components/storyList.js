@@ -59,15 +59,32 @@
 			
             vm.getStories = function() {
 
-                // dataApi.getStories(vm.list.Id).then(
-				// 	function (stories) {
-                //     	vm.stories = stories;
-				// 	}
-				// );
+                dataApi.getCards(vm.list.id).then(
+					function (stories) {
+                    	vm.stories = stories;
+					}
+				);
             };
 			
             vm.getStories();
 		}	
 
 	}	
+
+	function addCardModalController($uibModalInstance) {
+		
+		var vm = this;
+
+		vm.card = {
+			summary: '',
+			detail: ''
+		};
+
+		vm.ok = function () {
+			$uibModalInstance.close(vm.card);
+		};
+
+		vm.cancel = function () {
+			$uibModalInstance.dismiss('cancel');
+		};	}
 })();

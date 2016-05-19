@@ -2,13 +2,13 @@
 	<div class="panel-heading">
 		<strong>{{ vm.list.name }} </strong>
 		<div class="btn-group pull-right" role="group">
-			<button class="btn btn-default btn-xs"><i class="fa fa-plus"></i></button>
+			<button class="btn btn-default btn-xs" ng-click="vm.addCard()"><i class="fa fa-plus"></i></button>
 			<button class="btn btn-default btn-xs"><i class="fa fa-times"></i></button>
 		</div>
 	</div>
 	<div class="panel-body">
 		<div class="text-center">
-			<task ng-repeat="task in vm.tasks track by $index" item="task"></task>
+			<story-card ng-repeat="story in vm.stories track by $index" story="story"></story-card>
 		</div>
 	</div>
 </div>

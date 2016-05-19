@@ -67,7 +67,7 @@
 
 			var deferred = $q.defer();
 			var params = {
-				listId: listId
+				id: listId
 			};
 			
 			cardApi.fetch(params,
@@ -111,7 +111,9 @@
 
 		return {
 			addList: addList,
-			getLists: getLists
+			getLists: getLists,
+			addCard: addCard,
+			getCards: getCards
 		};
 	}]);
 })();
